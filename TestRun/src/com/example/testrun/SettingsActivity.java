@@ -7,9 +7,11 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
+import android.graphics.Color;
 import android.view.*;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 
 public class SettingsActivity extends Activity {
 	private ListView pList;
@@ -39,9 +41,23 @@ public class SettingsActivity extends Activity {
     		RAPIList.add(rapi.processName);
     	
     	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-    			android.R.layout.simple_list_item_1, RAPIList.toArray(RAPIs));
+    			R.layout.rowlayout, R.id.label, RAPIList.toArray(RAPIs));
     	
     	pList.setAdapter(adapter);
+    }
+    
+    public void infoClicked(View view) {
+    	// Info button has been clicked
+    	// For now, just color the row blue
+    	RelativeLayout parentRow = (RelativeLayout)view.getParent();
+    	parentRow.setBackgroundColor(Color.BLUE);
+    }
+    
+    public void killClicked(View view) {
+    	// Kill button has been clicked
+    	// For now, just color the row red
+    	RelativeLayout parentRow = (RelativeLayout)view.getParent();
+    	parentRow.setBackgroundColor(Color.RED);
     }
     
 }
