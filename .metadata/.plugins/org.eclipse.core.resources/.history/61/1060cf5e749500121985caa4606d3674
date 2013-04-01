@@ -15,7 +15,6 @@ import android.view.*;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class SettingsActivity extends Activity {
@@ -66,14 +65,8 @@ public class SettingsActivity extends Activity {
     
     public void killClicked(View view) {
     	RelativeLayout parentRow = (RelativeLayout)view.getParent();
-    	CharSequence rapiName = ((TextView)parentRow.getChildAt(0)).getText();
-    	
-    	for(RunningAppProcessInfo rapi : rapiList)
-    		if(rapi.processName.contentEquals(rapiName)){
-    			killProcess(rapi);
-    			break;
-    		}
-
+    	Toast.makeText(getBaseContext(), rapiList.get(parentRow.getId()).processName, Toast.LENGTH_LONG).show();
+    	//killProcess(rapiList.get(parentRow.getId()));
     	refreshList();
     }
     
