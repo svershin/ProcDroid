@@ -12,6 +12,12 @@ public final class R {
     }
     public static final class drawable {
         public static final int ic_launcher=0x7f020000;
+        public static final int ic_menu_about=0x7f020001;
+        public static final int ic_menu_app_settings=0x7f020002;
+        public static final int ic_menu_help=0x7f020003;
+        public static final int ic_menu_proc_fkill=0x7f020004;
+        public static final int ic_menu_proc_info=0x7f020005;
+        public static final int ic_menu_proc_kill=0x7f020006;
     }
     public static final class id {
         public static final int infoButton=0x7f070002;
