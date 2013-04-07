@@ -1,5 +1,8 @@
 package com.example.testrun;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,10 +17,13 @@ import android.view.*;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class SettingsActivity extends Activity {
 	private ListView pList;
 	private ActivityManager activityManager;
+	private List<RunningAppProcessInfo> rapiList;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +32,8 @@ public class SettingsActivity extends Activity {
         
         activityManager = (ActivityManager) this.getSystemService(ACTIVITY_SERVICE);
         pList = (ListView)findViewById(R.id.pList);
+        rapiList = new ArrayList<RunningAppProcessInfo>();
+        
         refreshList();
     }
 
@@ -37,13 +45,16 @@ public class SettingsActivity extends Activity {
     }
     
     private void refreshList() {
-    	List<String> RAPIList = new ArrayList<String>();
+    	List<String> rapiNames = new ArrayList<String>();
     	String[] RAPIs = new String[0];
-    	for(RunningAppProcessInfo rapi : activityManager.getRunningAppProcesses())
-    		RAPIList.add(rapi.processName);
+    	
+    	for(RunningAppProcessInfo rapi : activityManager.getRunningAppProcesses()) {
+    		rapiList.add(rapi);
+    		rapiNames.add(rapi.processName);
+    	}
     	
     	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-    			R.layout.rowlayout, R.id.label, RAPIList.toArray(RAPIs));
+    			R.layout.rowlayout, R.id.label, rapiNames.toArray(RAPIs));
     	
     	pList.setAdapter(adapter);
     }
@@ -56,11 +67,38 @@ public class SettingsActivity extends Activity {
     }
     
     public void killClicked(View view) {
-    	// Kill button has been clicked
-    	// For now, just color the row red
-    	RelativeLayout parentRow = (RelativeLayout)view.getParent();
-    	parentRow.setBackgroundColor(Color.RED);
+        RelativeLayout parentRow = (RelativeLayout)view.getParent();
+        CharSequence rapiName = ((TextView)parentRow.getChildAt(0)).getText();
+        
+        for(RunningAppProcessInfo rapi : rapiList)
+            if(rapi.processName.contentEquals(rapiName)){
+                killProcess(rapi);
+                break;
+            }
+
+        refreshList();
     }
+    
+    private void killProcess(RunningAppProcessInfo rapi) {
+        //TODO: Actual error handling
+        try {
+            Process rootProcess = Runtime.getRuntime().exec(new String[] { "su" });
+            
+            String command = "kill -9 " + rapi.pid;
+            
+            BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(rootProcess.getOutputStream()), 2048);
+            bw.write(command);
+            bw.newLine();
+            bw.flush();
+        } catch (IOException e) {
+            //Handle a writer error
+            Toast.makeText(getBaseContext(), "IO Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
+        } catch (Exception e) {
+            //Handle not having root
+            Toast.makeText(getBaseContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+        }
+    }
+
     
     public void fkillClicked(View view) {
     	// fKill button has been clicked
