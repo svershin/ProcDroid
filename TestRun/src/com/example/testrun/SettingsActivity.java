@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.view.*;
 import android.widget.ArrayAdapter;
@@ -58,6 +60,43 @@ public class SettingsActivity extends Activity {
     	// For now, just color the row red
     	RelativeLayout parentRow = (RelativeLayout)view.getParent();
     	parentRow.setBackgroundColor(Color.RED);
+    }
+    
+    public void fkillClicked(View view) {
+    	// fKill button has been clicked
+    	// For now, just color the row green
+    	RelativeLayout parentRow = (RelativeLayout)view.getParent();
+    	parentRow.setBackgroundColor(Color.GREEN);
+    }
+    
+    public void appSettings(View view) {
+    	
+    }
+    
+    public void appAbout(View view) {
+    	AlertDialog.Builder builder = new AlertDialog.Builder(this);
+    	builder.setTitle("About");
+    	builder.setMessage("About this application");
+    	builder.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.cancel();
+            }
+        });
+    	
+    	builder.create().show();
+    }
+
+    public void appHelp(View view) {
+    	AlertDialog.Builder builder = new AlertDialog.Builder(this);
+    	builder.setTitle("Help");
+    	builder.setMessage("Help for this application");
+    	builder.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.cancel();
+            }
+        });
+    	
+    	builder.create().show();
     }
     
 }
