@@ -60,10 +60,26 @@ public class SettingsActivity extends Activity {
     }
     
     public void infoClicked(View view) {
-    	// Info button has been clicked
-    	// For now, just color the row blue
     	RelativeLayout parentRow = (RelativeLayout)view.getParent();
-    	parentRow.setBackgroundColor(Color.BLUE);
+        CharSequence rapiName = ((TextView)parentRow.getChildAt(0)).getText();
+        
+        for(RunningAppProcessInfo rapi : rapiList)
+            if(rapi.processName.contentEquals(rapiName)){
+            	AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            	String messageString = String.format("name: %s\npid: %d\nuid: %d", rapi.processName, rapi.pid, rapi.uid);
+            	builder.setTitle("Process Info");
+            	builder.setMessage(messageString);
+            	builder.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+            	
+            	builder.create().show();
+                break;
+            }
+
+        refreshList();
     }
     
     public void killClicked(View view) {
@@ -126,8 +142,9 @@ public class SettingsActivity extends Activity {
 
     public void appHelp(View view) {
     	AlertDialog.Builder builder = new AlertDialog.Builder(this);
+    	LayoutInflater inflater = this.getLayoutInflater();
     	builder.setTitle("Help");
-    	builder.setMessage("Help for this application");
+    	builder.setView(inflater.inflate(R.layout.helpbutton, null));
     	builder.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 dialog.cancel();
