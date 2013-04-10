@@ -10,6 +10,7 @@
     <string name="helpKill">Kill Button</string>
     <string name="helpFKill">Force Kill Button</string>
     <string name="helpAppButtons">App Buttons:</string>
+    <string name="helpAppRefresh">Refresh List</string>
     <string name="helpAppAbout">About App</string>
     <string name="helpAppHelp">App Help</string>
     

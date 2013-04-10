@@ -79,11 +79,19 @@
         android:textColor="#FFFFFF" />
 
     <ImageButton
-        android:id="@+id/imageButton4"
+        android:id="@+id/imageButton6"
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/textView5"
+        android:src="@drawable/ic_menu_refresh" />
+    
+    <ImageButton
+        android:id="@+id/imageButton4"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/imageButton6"
         android:src="@drawable/ic_menu_about" />
 
     <ImageButton
@@ -94,6 +102,17 @@
         android:layout_below="@+id/imageButton4"
         android:src="@drawable/ic_menu_help" />
 
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageButton6"
+        android:layout_marginBottom="11dp"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/imageButton6"
+        android:text="@string/helpAppRefresh"
+        android:textColor="#FFFFFF" />
+    
     <TextView
         android:id="@+id/textView7"
         android:layout_width="wrap_content"

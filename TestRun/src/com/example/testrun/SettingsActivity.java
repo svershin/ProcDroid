@@ -172,4 +172,8 @@ public class SettingsActivity extends Activity {
     	builder.create().show();
     }
     
+    public void appRefresh(View view) {
+    	refreshList();
+    }
+    
 }
