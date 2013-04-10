@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:text="Process Buttons:"
+        android:text="@string/helpProcButtons"
         android:textColor="#FFFFFF" />
 
     <ImageButton
@@ -44,7 +44,7 @@
         android:layout_marginBottom="11dp"
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@+id/imageButton1"
-        android:text="App Settings Button"
+        android:text="@string/helpAppSettings"
         android:textColor="#FFFFFF" />
 
     <TextView
@@ -55,7 +55,7 @@
         android:layout_marginBottom="11dp"
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@+id/imageButton2"
-        android:text="Kill Button"
+        android:text="@string/helpKill"
         android:textColor="#FFFFFF" />
 
     <TextView
@@ -66,7 +66,7 @@
         android:layout_marginBottom="11dp"
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@+id/imageButton3"
-        android:text="Force Kill Button"
+        android:text="@string/helpFKill"
         android:textColor="#FFFFFF" />
     
     <TextView
@@ -75,7 +75,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/imageButton3"
-        android:text="App Buttons:"
+        android:text="@string/helpAppButtons"
         android:textColor="#FFFFFF" />
 
     <ImageButton
@@ -102,7 +102,7 @@
         android:layout_marginBottom="11dp"
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@+id/imageButton4"
-        android:text="About App"
+        android:text="@string/helpAppAbout"
         android:textColor="#FFFFFF" />
 
     <TextView
@@ -113,7 +113,7 @@
         android:layout_marginBottom="11dp"
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@+id/imageButton5"
-        android:text="App Help"
+        android:text="@string/helpAppHelp"
         android:textColor="#FFFFFF" />
 
 </RelativeLayout>

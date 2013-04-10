@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">TestRun</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="app_name">ProcDroid</string>
     <string name="menu_settings">Settings</string>
     <string name="procLabel">PROCESSES</string>
+    
+    <string name="helpProcButtons">Process Buttons:</string>
+    <string name="helpAppSettings">App Settings Button</string>
+    <string name="helpKill">Kill Button</string>
+    <string name="helpFKill">Force Kill Button</string>
+    <string name="helpAppButtons">App Buttons:</string>
+    <string name="helpAppAbout">About App</string>
+    <string name="helpAppHelp">App Help</string>
     
 </resources>
