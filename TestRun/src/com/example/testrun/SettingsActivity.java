@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import android.net.Uri;
@@ -58,6 +59,8 @@ public class SettingsActivity extends Activity {
     		rapiList.add(rapi);
     		names.add(rapi.processName);
     	}
+    	
+    	Collections.sort(names);
     	
     	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
     			R.layout.rowlayout, R.id.label, names.toArray(namesArray));
