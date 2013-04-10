@@ -9,7 +9,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:text="Process Buttons:" />
+        android:text="Process Buttons:"
+        android:textColor="#FFFFFF" />
 
     <ImageButton
         android:id="@+id/imageButton1"
@@ -43,7 +44,8 @@
         android:layout_marginBottom="11dp"
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@+id/imageButton1"
-        android:text="Info Button" />
+        android:text="App Settings Button"
+        android:textColor="#FFFFFF" />
 
     <TextView
         android:id="@+id/textView3"
@@ -53,7 +55,8 @@
         android:layout_marginBottom="11dp"
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@+id/imageButton2"
-        android:text="Kill Button" />
+        android:text="Kill Button"
+        android:textColor="#FFFFFF" />
 
     <TextView
         android:id="@+id/textView4"
@@ -63,7 +66,8 @@
         android:layout_marginBottom="11dp"
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@+id/imageButton3"
-        android:text="Force Kill Button" />
+        android:text="Force Kill Button"
+        android:textColor="#FFFFFF" />
     
     <TextView
         android:id="@+id/textView5"
@@ -71,7 +75,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/imageButton3"
-        android:text="App Buttons:" />
+        android:text="App Buttons:"
+        android:textColor="#FFFFFF" />
 
     <ImageButton
         android:id="@+id/imageButton4"
@@ -79,7 +84,7 @@
         android:layout_height="45dp"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/textView5"
-        android:src="@drawable/ic_menu_app_settings" />
+        android:src="@drawable/ic_menu_about" />
 
     <ImageButton
         android:id="@+id/imageButton5"
@@ -87,44 +92,28 @@
         android:layout_height="45dp"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/imageButton4"
-        android:src="@drawable/ic_menu_about" />
-
-    <ImageButton
-        android:id="@+id/imageButton6"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/imageButton5"
         android:src="@drawable/ic_menu_help" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/imageButton4"
         android:layout_marginBottom="11dp"
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@+id/imageButton4"
-        android:text="Android App Settings" />
+        android:text="About App"
+        android:textColor="#FFFFFF" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/imageButton5"
         android:layout_marginBottom="11dp"
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@+id/imageButton5"
-        android:text="About App" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/imageButton6"
-        android:layout_marginBottom="11dp"
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@+id/imageButton6"
-        android:text="App Help" />
+        android:text="App Help"
+        android:textColor="#FFFFFF" />
 
 </RelativeLayout>

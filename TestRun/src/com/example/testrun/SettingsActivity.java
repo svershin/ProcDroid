@@ -6,13 +6,17 @@ import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.graphics.Color;
+import android.content.Intent;
 import android.view.*;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -45,16 +49,18 @@ public class SettingsActivity extends Activity {
     }
     
     private void refreshList() {
-    	List<String> rapiNames = new ArrayList<String>();
-    	String[] RAPIs = new String[0];
+    	List<String> names = new ArrayList<String>();
+    	String[] namesArray = new String[0];
     	
+    	rapiList.clear();
+
     	for(RunningAppProcessInfo rapi : activityManager.getRunningAppProcesses()) {
     		rapiList.add(rapi);
-    		rapiNames.add(rapi.processName);
+    		names.add(rapi.processName);
     	}
     	
     	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-    			R.layout.rowlayout, R.id.label, rapiNames.toArray(RAPIs));
+    			R.layout.rowlayout, R.id.label, names.toArray(namesArray));
     	
     	pList.setAdapter(adapter);
     }
@@ -63,23 +69,23 @@ public class SettingsActivity extends Activity {
     	RelativeLayout parentRow = (RelativeLayout)view.getParent();
         CharSequence rapiName = ((TextView)parentRow.getChildAt(0)).getText();
         
-        for(RunningAppProcessInfo rapi : rapiList)
-            if(rapi.processName.contentEquals(rapiName)){
-            	AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            	String messageString = String.format("name: %s\npid: %d\nuid: %d", rapi.processName, rapi.pid, rapi.uid);
-            	builder.setTitle("Process Info");
-            	builder.setMessage(messageString);
-            	builder.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
-            	
-            	builder.create().show();
-                break;
-            }
-
-        refreshList();
+        //Credit to:
+        //http://stackoverflow.com/questions/4421527/start-android-application-info-screen
+    	Intent intent = new Intent();
+    	final int apiLevel = Build.VERSION.SDK_INT;
+    	
+    	if (apiLevel >= 9) {
+    		intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+    	    Uri uri = Uri.fromParts("package", rapiName.toString(), null);
+    	    intent.setData(uri);
+    	} else { 
+	    	final String appPkgName = (apiLevel == 8 ? "pkg" : "com.android.setttings.ApplicationPkgName");
+	        intent.setAction(Intent.ACTION_VIEW);
+	        intent.setClassName("com.android.settings", "com.android.settings.InstalledAppDetails");
+	        intent.putExtra(appPkgName, rapiName);
+    	}
+    	
+    	startActivity(intent);
     }
     
     public void killClicked(View view) {
@@ -88,19 +94,23 @@ public class SettingsActivity extends Activity {
         
         for(RunningAppProcessInfo rapi : rapiList)
             if(rapi.processName.contentEquals(rapiName)){
-                killProcess(rapi);
+                killProcess(rapi, false);
                 break;
             }
 
         refreshList();
     }
     
-    private void killProcess(RunningAppProcessInfo rapi) {
+    private void killProcess(RunningAppProcessInfo rapi, boolean force) {
         //TODO: Actual error handling
         try {
             Process rootProcess = Runtime.getRuntime().exec(new String[] { "su" });
             
-            String command = "kill -9 " + rapi.pid;
+            String command;
+            if(force)
+            	command = "kill -9 " + rapi.pid;
+            else
+            	command = "kill " + rapi.pid;
             
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(rootProcess.getOutputStream()), 2048);
             bw.write(command);
@@ -115,12 +125,17 @@ public class SettingsActivity extends Activity {
         }
     }
 
-    
     public void fkillClicked(View view) {
-    	// fKill button has been clicked
-    	// For now, just color the row green
     	RelativeLayout parentRow = (RelativeLayout)view.getParent();
-    	parentRow.setBackgroundColor(Color.GREEN);
+        CharSequence rapiName = ((TextView)parentRow.getChildAt(0)).getText();
+        
+        for(RunningAppProcessInfo rapi : rapiList)
+            if(rapi.processName.contentEquals(rapiName)){
+                killProcess(rapi, true);
+                break;
+            }
+
+        refreshList();
     }
     
     public void appSettings(View view) {

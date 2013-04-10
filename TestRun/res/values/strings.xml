@@ -4,7 +4,6 @@
     <string name="app_name">TestRun</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
-    <string name="appButtonLabel">APPS</string>
-    <string name="procButtonLabel">PROCS</string>
+    <string name="procLabel">PROCESSES</string>
     
 </resources>

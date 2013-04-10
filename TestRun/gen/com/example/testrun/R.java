@@ -20,29 +20,27 @@ public final class R {
         public static final int ic_menu_proc_kill=0x7f020006;
     }
     public static final class id {
-        public static final int appAboutButton=0x7f070001;
-        public static final int appHelpButton=0x7f070002;
-        public static final int appSettingsButton=0x7f070000;
-        public static final int fkillButton=0x7f070015;
+        public static final int appAboutButton=0x7f070002;
+        public static final int appHelpButton=0x7f070003;
+        public static final int fkillButton=0x7f070013;
         public static final int imageButton1=0x7f070005;
         public static final int imageButton2=0x7f070006;
         public static final int imageButton3=0x7f070007;
         public static final int imageButton4=0x7f07000c;
         public static final int imageButton5=0x7f07000d;
-        public static final int imageButton6=0x7f07000e;
-        public static final int infoButton=0x7f070013;
-        public static final int killButton=0x7f070014;
-        public static final int label=0x7f070012;
-        public static final int menu_settings=0x7f070016;
-        public static final int pList=0x7f070003;
+        public static final int infoButton=0x7f070011;
+        public static final int killButton=0x7f070012;
+        public static final int label=0x7f070010;
+        public static final int menu_settings=0x7f070014;
+        public static final int pList=0x7f070001;
+        public static final int processesLabel=0x7f070000;
         public static final int textView1=0x7f070004;
         public static final int textView2=0x7f070008;
         public static final int textView3=0x7f070009;
         public static final int textView4=0x7f07000a;
         public static final int textView5=0x7f07000b;
-        public static final int textView6=0x7f07000f;
-        public static final int textView7=0x7f070010;
-        public static final int textView8=0x7f070011;
+        public static final int textView7=0x7f07000e;
+        public static final int textView8=0x7f07000f;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -53,11 +51,10 @@ public final class R {
         public static final int activity_main=0x7f060000;
     }
     public static final class string {
-        public static final int appButtonLabel=0x7f040003;
         public static final int app_name=0x7f040000;
         public static final int hello_world=0x7f040001;
         public static final int menu_settings=0x7f040002;
-        public static final int procButtonLabel=0x7f040004;
+        public static final int procLabel=0x7f040003;
     }
     public static final class style {
         /** 
