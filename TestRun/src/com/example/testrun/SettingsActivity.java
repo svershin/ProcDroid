@@ -103,6 +103,8 @@ public class SettingsActivity extends Activity {
     
     private void killProcess(RunningAppProcessInfo rapi, boolean force) {
         //TODO: Actual error handling
+    	
+    	if (rapi.processName.equals("stericson.busybox")) return; // don't kill the rooting application!!!
         try {
             Process rootProcess = Runtime.getRuntime().exec(new String[] { "su" });
             
