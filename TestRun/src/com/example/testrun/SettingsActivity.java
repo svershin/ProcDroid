@@ -150,8 +150,8 @@ public class SettingsActivity extends Activity {
     public void appAbout(View view) {
     	AlertDialog.Builder builder = new AlertDialog.Builder(this);
     	builder.setTitle("About");
-    	builder.setMessage("ProcDroid is an Android task killer application developed for" +
-    			" COMP 3000 by David Carson, Devin Denis, and Sergey Vershinin. Something about icons.");
+    	builder.setMessage("ProcDroid is an Android process management application developed for" +
+    			" COMP 3000 by David Carson, Devin Denis, and Sergey Vershinin.\n\nThe interface icons used by the ProcDroid are taken from the Glyphish icon set available under the CC licence.");
     	builder.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 dialog.cancel();
